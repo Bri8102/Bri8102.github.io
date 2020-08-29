@@ -1,11 +1,10 @@
 ---
 layout: post
 title:      "Say Hello To Your New Resident Nerd."
-date:       2020-08-29 19:24:41 +0000
+date:       2020-08-29 15:24:42 -0400
 permalink:  say_hello_to_your_new_resident_nerd
 ---
 
-Why did you decide to study Software Engineering?
 
 Here’s my semi-boring story on why I decided to push myself outside my comfort zone with this Software Engineering course..😂
 
