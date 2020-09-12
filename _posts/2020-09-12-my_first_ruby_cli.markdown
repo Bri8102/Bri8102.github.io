@@ -33,7 +33,9 @@ The first website that came to my head was Playstation, and as i went through th
 5. Following the Single Responsibility Principle (SRP), I split my code up to four files:
 
 **cli.rb** : code handling CLI display logic and user input
+
 **deal_category.rb** : code scraping first level of data, displaying 5 deal categories for user selection
+
 **game_list.rb** : code scraping second level of data, displaying 30 games/theme deals for user viewing
 
 **You can view my [repo code here](https://github.com/Bri8102/cli-project-ultragamer-briana) ! **
