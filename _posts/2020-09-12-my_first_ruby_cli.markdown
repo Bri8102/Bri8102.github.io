@@ -1,7 +1,7 @@
 ---
 layout: post
 title:      "My First Ruby CLI"
-date:       2020-09-12 04:15:28 +0000
+date:       2020-09-12 00:15:29 -0400
 permalink:  my_first_ruby_cli
 ---
 
