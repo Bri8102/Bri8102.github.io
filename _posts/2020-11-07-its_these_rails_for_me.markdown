@@ -20,12 +20,17 @@ I realized that when I was trying to login via google (the 3rd party provider i 
 
 After hours of debugging and several minutes on a zoom call with a couple of members from my cohort **(ABSOLUTE LIFESAVERS**). My User model was requiring the presence of username parameter as well as email and because there was no where for omniauth to pull the username information from, my user wasnt being created. I refactored the code to only require the presence of email. 
 
-It looked something like this:                                               refactored to this:
-```validates :username, :email, presence: true              validates :email, presence: true         
 ```
+It looked something like this:     validates :username, :email, presence: true
+
+refactored to this:
+
+validates :email, presence: true         
+```
+ 
 
 This allowed my sessions#omniauth work, thus creating my user and successfully allowing 3rd party login to function properly.
-``` def omniauth
+def omniauth
           @user = User.from_omniauth(auth)
           @user.save
           session[:user_id] = @user.id
