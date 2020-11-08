@@ -1,7 +1,7 @@
 ---
 layout: post
 title:      "It's these Rails for me"
-date:       2020-11-08 00:28:22 +0000
+date:       2020-11-07 19:28:22 -0500
 permalink:  its_these_rails_for_me
 ---
 
@@ -16,6 +16,25 @@ I kind of have a mild obsession with TO DO LIST applications and thought, i migh
 
 With this, i was able to successful build out my associations and use nested routes to get my app functioning. However, where it all started to go downhill was when i introduced OminAuth into the mix. This quickly became a 2 day stretch consisting of endless headaches, frustration, a mix of many overwhelming emotions to say the least as i couldn't just figure out what i was doing wrong. Keep in mind that i didn't use Devise, which made it a little more difficult as the instructions for set up were a little different from using OmniAuth coupled with devise.
 
+I realized that when i was trying to login via google (the 3rd party provider i selected), my user wasn't being created. I received the **Error** - ```No route matches {:action=>"show", :controller=>"users"}, missing required keys: [:id]```
+
+After hours of debugging and several minutes on a zoom call with a couple of members from my cohort **(ABSOLUTE LIFESAVERS**). My User model was requiring the presence of username parameter as well as email and because there was no where for omniauth to pull the username information from, my user wasnt being created. I refactored the code to only require the presence of email. 
+
+It looked something like this:                                               refactored to this:
+```validates :username, :email, presence: true              validates :email, presence: true         
+```
+
+This allowed my sessions#omniauth work, thus creating my user and successfully allowing 3rd party login to function properly.
+``` def omniauth
+          @user = User.from_omniauth(auth)
+          @user.save
+          session[:user_id] = @user.id
+         redirect_to user_path(@user)
+    end
+```
+
+
+In Hindisght, it really seems like an easy fix, but it took myself and 2 of my cohort members on a zoom call to figure this out. This is the importance of peer programming. You can't know it all and that's okay. Turns out 6 eyes are better than 2 and I'm glad they were able to spot what i couldn't. In the end we got it done and I will definitely be building out more apps with my current knowledge on Rails for further Solidify my knowledge and see what new challenges i come accross to help sharpen my growing skillset.
 
 
 
