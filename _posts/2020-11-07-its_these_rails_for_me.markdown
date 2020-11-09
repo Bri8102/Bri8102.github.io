@@ -30,7 +30,7 @@ validates :email, presence: true
  
 
 This allowed my sessions#omniauth work, thus creating my user and successfully allowing 3rd party login to function properly.
-def omniauth
+```def omniauth
           @user = User.from_omniauth(auth)
           @user.save
           session[:user_id] = @user.id
